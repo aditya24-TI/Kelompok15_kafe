@@ -24,21 +24,17 @@ $result_pengguna = mysqli_query($koneksi, "SELECT COUNT(id_pengguna) AS total_pe
 $stat_pengguna = mysqli_fetch_assoc($result_pengguna)['total_pengguna']; 
 
  
-
-
 $result_meja = mysqli_query($koneksi, "SELECT COUNT(id_meja) AS total_meja FROM meja"); 
 
 $stat_meja = mysqli_fetch_assoc($result_meja)['total_meja']; 
 
  
 
-
 $result_reservasi = mysqli_query($koneksi, "SELECT COUNT(id_reservasi) AS reservasi_aktif FROM reservasi WHERE status_reservasi = 'aktif'"); 
 
 $stat_reservasi_aktif = mysqli_fetch_assoc($result_reservasi)['reservasi_aktif']; 
 
  
-
 
 $result_tamu = mysqli_query($koneksi, "SELECT SUM(jumlah_orang) AS total_tamu FROM reservasi WHERE status_reservasi = 'aktif'"); 
 

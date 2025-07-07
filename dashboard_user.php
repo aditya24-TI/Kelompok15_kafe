@@ -1,16 +1,13 @@
 <?php 
 
-// Wajib ada di setiap halaman user/admin 
 
 require 'koneksi.php'; 
 
  
 
-// Cek apakah pengguna sudah login dan rolenya adalah 'user' 
+
 
 if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'user') { 
-
-    // Jika tidak, redirect ke halaman login 
 
     header("Location: index.php"); 
 
