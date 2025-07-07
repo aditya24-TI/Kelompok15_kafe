@@ -4,7 +4,7 @@ require 'koneksi.php';
 
  
 
-// Proteksi halaman 
+
 
 if (!isset($_SESSION['id_pengguna']) || $_SERVER['REQUEST_METHOD'] !== 'POST') { 
 
@@ -20,7 +20,7 @@ $id_reservasi = $_POST['id_reservasi'];
 
  
 
-// Mulai transaksi 
+ 
 
 mysqli_begin_transaction($koneksi); 
 
@@ -28,9 +28,7 @@ mysqli_begin_transaction($koneksi);
 
 try { 
 
-    // Langkah 1: Ubah status reservasi menjadi 'dibatalkan' 
-
-    // Pastikan hanya pemilik reservasi yang bisa membatalkan 
+ 
 
     $sql1 = "UPDATE reservasi SET status_reservasi = 'dibatalkan' WHERE id_reservasi = ? AND id_pengguna = ?"; 
 
@@ -42,7 +40,6 @@ try {
 
  
 
-    // Cek apakah update berhasil (apakah ada baris yang terpengaruh) 
 
     if (mysqli_stmt_affected_rows($stmt1) == 0) { 
 
@@ -52,7 +49,7 @@ try {
 
  
 
-    // Langkah 2: Dapatkan id_meja dari reservasi yang dibatalkan 
+
 
     $sql_get_meja = "SELECT id_meja FROM reservasi WHERE id_reservasi = ?"; 
 
@@ -70,7 +67,7 @@ try {
 
  
 
-    // Langkah 3: Ubah status meja kembali menjadi 'tersedia' 
+
 
     $sql2 = "UPDATE meja SET status = 'tersedia' WHERE id_meja = ?"; 
 
@@ -82,7 +79,6 @@ try {
 
      
 
-    // Jika semua query berhasil, commit transaksi 
 
     mysqli_commit($koneksi); 
 
@@ -96,7 +92,6 @@ try {
 
 } catch (Exception $e) { 
 
-    // Jika terjadi error, rollback semua perubahan 
 
     mysqli_rollback($koneksi); 
 
@@ -106,7 +101,6 @@ try {
 
  
 
-// Tutup statement 
 
 mysqli_stmt_close($stmt1); 
 

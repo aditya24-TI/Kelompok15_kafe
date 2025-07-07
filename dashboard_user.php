@@ -86,7 +86,6 @@ $nama_lengkap = $_SESSION['nama_lengkap'];
 
                 <?php 
 
-                // Ambil semua data meja dari database 
 
                 $sql = "SELECT nomor_meja, kapasitas, status FROM meja ORDER BY nomor_meja ASC"; 
 
@@ -100,7 +99,6 @@ $nama_lengkap = $_SESSION['nama_lengkap'];
 
                     echo "<td>" . htmlspecialchars($meja['kapasitas']) . " orang</td>"; 
 
-                    // Beri warna berbeda untuk status 
 
                     if ($meja['status'] == 'tersedia') { 
 
@@ -144,7 +142,6 @@ $nama_lengkap = $_SESSION['nama_lengkap'];
 
                         <?php 
 
-                        // Query hanya untuk meja yang tersedia 
 
                         $sql_meja_tersedia = "SELECT id_meja, nomor_meja, kapasitas FROM meja WHERE status = 'tersedia' ORDER BY nomor_meja ASC"; 
 

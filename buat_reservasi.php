@@ -36,7 +36,6 @@ if (empty($id_meja) || empty($waktu_reservasi) || empty($jumlah_orang)) {
 
  
 
-// Panggil STORED PROCEDURE 'BuatReservasi' 
 
 $sql = "CALL BuatReservasi(?, ?, ?, ?)"; 
 
@@ -46,13 +45,11 @@ $stmt = mysqli_prepare($koneksi, $sql);
 
 if ($stmt) { 
 
-    // Bind parameter 
 
     mysqli_stmt_bind_param($stmt, "iisi", $id_pengguna, $id_meja, $waktu_reservasi, $jumlah_orang); 
 
  
 
-    // Eksekusi 
 
     if (mysqli_stmt_execute($stmt)) { 
 
@@ -60,9 +57,7 @@ if ($stmt) {
 
          
 
-        // Ingat TRIGGER? Saat query ini berhasil, trigger di database akan otomatis 
 
-        // mengubah status meja menjadi 'dipesan'. Kita tidak perlu kode PHP tambahan untuk itu. 
 
          
 

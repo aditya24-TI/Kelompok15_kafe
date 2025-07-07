@@ -4,7 +4,6 @@ require 'koneksi.php';
 
  
 
-// Proteksi halaman admin, pastikan hanya admin yang bisa mengakses 
 
 if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'admin') { 
 
@@ -16,11 +15,9 @@ if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'admin') {
 
  
 
-// === Query untuk Statistik (AGGREGATE OPERATIONS) === 
 
  
 
-// 1. Jumlah total pengguna 
 
 $result_pengguna = mysqli_query($koneksi, "SELECT COUNT(id_pengguna) AS total_pengguna FROM pengguna"); 
 
@@ -28,7 +25,6 @@ $stat_pengguna = mysqli_fetch_assoc($result_pengguna)['total_pengguna'];
 
  
 
-// 2. Jumlah total meja 
 
 $result_meja = mysqli_query($koneksi, "SELECT COUNT(id_meja) AS total_meja FROM meja"); 
 
@@ -36,7 +32,6 @@ $stat_meja = mysqli_fetch_assoc($result_meja)['total_meja'];
 
  
 
-// 3. Jumlah reservasi yang masih aktif 
 
 $result_reservasi = mysqli_query($koneksi, "SELECT COUNT(id_reservasi) AS reservasi_aktif FROM reservasi WHERE status_reservasi = 'aktif'"); 
 
@@ -44,7 +39,6 @@ $stat_reservasi_aktif = mysqli_fetch_assoc($result_reservasi)['reservasi_aktif']
 
  
 
-// 4. Jumlah total tamu dari reservasi aktif (gunakan ?? 0 untuk menangani NULL jika tidak ada reservasi) 
 
 $result_tamu = mysqli_query($koneksi, "SELECT SUM(jumlah_orang) AS total_tamu FROM reservasi WHERE status_reservasi = 'aktif'"); 
 

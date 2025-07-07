@@ -196,11 +196,7 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
 
                     echo "<td class='action-buttons'>"; 
 
-                    // Tombol Edit mengarahkan ke halaman ini lagi dengan parameter GET 
-
                     echo "<a href='kelola_meja.php?edit=" . $meja['id_meja'] . "' class='btn btn-info'>Edit</a> "; 
-
-                    // Tombol Delete berada dalam form terpisah 
 
                     echo "<form action='proses_meja.php' method='POST' onsubmit='return confirm(\"Yakin ingin menghapus meja ini? Reservasi terkait juga akan terhapus.\")' style='display:inline-block;'>"; 
 

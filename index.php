@@ -1,12 +1,10 @@
 <?php 
 
-// Mulai session untuk cek status login 
 
 session_start(); 
 
  
 
-// Jika sudah login, redirect ke dashboard yang sesuai 
 
 if (isset($_SESSION['id_pengguna'])) { 
 

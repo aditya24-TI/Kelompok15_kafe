@@ -4,7 +4,6 @@ require 'koneksi.php';
 
  
 
-// Proteksi halaman admin 
 
 if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'admin') { 
 
@@ -15,8 +14,7 @@ if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'admin') {
 } 
 
  
-
-// Logika untuk filter status 
+ 
 
 $filter_status = ''; 
 
@@ -32,7 +30,6 @@ if (isset($_GET['status']) && $_GET['status'] != '') {
 
  
 
-// Query data dari VIEW 
 
 $sql = "SELECT nama_pemesan, email, nomor_meja, waktu_reservasi, jumlah_orang, status_reservasi  
 
@@ -48,7 +45,6 @@ $stmt = mysqli_prepare($koneksi, $sql);
 
  
 
-// Jika ada filter, bind parameternya 
 
 if ($sql_where != '') { 
 

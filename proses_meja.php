@@ -4,7 +4,7 @@ require 'koneksi.php';
 
  
 
-// Proteksi halaman admin 
+
 
 if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'admin' || !isset($_POST['action'])) { 
 
@@ -78,11 +78,7 @@ switch ($action) {
 
         $id_meja = $_POST['id_meja']; 
 
-        // Catatan: Jika ada foreign key constraint dengan ON DELETE RESTRICT, 
-
-        // Anda tidak bisa menghapus meja yang sedang aktif direferensikan. 
-
-        // Opsi ON DELETE CASCADE pada tabel reservasi kita mengatasi ini. 
+ 
 
         $sql = "DELETE FROM meja WHERE id_meja = ?"; 
 
@@ -114,10 +110,10 @@ switch ($action) {
 
  
 
-// Redirect kembali ke halaman kelola meja 
+
 
 header("Refresh: 2; URL=kelola_meja.php"); 
 
 exit(); 
 
-?> 
+?>

@@ -1,12 +1,10 @@
 <?php 
 
-// Hubungkan ke database (session_start() sudah ada di sini) 
 
 require 'koneksi.php'; 
 
  
 
-// Ambil data dari form 
 
 $email = $_POST['email']; 
 
@@ -22,7 +20,6 @@ if (empty($email) || empty($password)) {
 
  
 
-// Siapkan query untuk mencari pengguna berdasarkan email 
 
 $sql = "SELECT id_pengguna, nama_lengkap, email, password, role FROM pengguna WHERE email = ?"; 
 
@@ -42,15 +39,9 @@ if ($stmt) {
 
  
 
-    // Verifikasi password 
 
-    // Cek apakah user ditemukan DAN password yang diinput cocok dengan hash di database 
 
     if ($user && password_verify($password, $user['password'])) { 
-
-        // Login berhasil 
-
-        // Simpan informasi pengguna ke dalam session 
 
         $_SESSION['id_pengguna'] = $user['id_pengguna']; 
 
@@ -60,7 +51,7 @@ if ($stmt) {
 
  
 
-        // Redirect pengguna berdasarkan rolenya 
+
 
         if ($user['role'] == 'admin') { 
 
@@ -78,7 +69,7 @@ if ($stmt) {
 
     } else { 
 
-        // Login gagal 
+
 
         echo "Login gagal! Email atau password salah."; 
 

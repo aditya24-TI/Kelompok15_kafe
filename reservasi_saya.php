@@ -4,7 +4,6 @@ require 'koneksi.php';
 
  
 
-// Proteksi halaman 
 
 if (!isset($_SESSION['id_pengguna']) || $_SESSION['role'] != 'user') { 
 
@@ -84,7 +83,7 @@ $nama_lengkap = $_SESSION['nama_lengkap'];
 
                 <?php 
 
-                // Query data dari VIEW, difilter berdasarkan id_pengguna yang login 
+
 
                 $sql = "SELECT id_reservasi, nomor_meja, waktu_reservasi, jumlah_orang, status_reservasi  
 
@@ -122,7 +121,7 @@ $nama_lengkap = $_SESSION['nama_lengkap'];
 
                         echo "<td>"; 
 
-                        // Tampilkan tombol batal HANYA jika statusnya 'aktif' 
+
 
                         if ($reservasi['status_reservasi'] == 'aktif') { 
 
